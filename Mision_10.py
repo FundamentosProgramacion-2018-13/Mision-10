@@ -1,5 +1,5 @@
 #Diego Armando Ayala Hernadez
-#a013767247#
+#a013767247
 
 import matplotlib.pyplot as plot
 def listarEquiposOrdenados(nombreArchivo):
