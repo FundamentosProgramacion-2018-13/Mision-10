@@ -93,9 +93,6 @@ def mostrarEquiposyPuntos(nombreArchivo):
     return entablar
 
 
-
-
-
 def main():
     ordenados = listarEquiposOrdenados("LigaMX.txt")
     print(ordenados)
