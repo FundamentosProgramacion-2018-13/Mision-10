@@ -4,6 +4,7 @@
 #Librerias
 import matplotlib.pyplot as plot
 
+
 # 1. Ordena los nombres de los equipos alfabéticamente y los pone en mayúsculas
 def listarEquiposOrdenados(nombreArchivo):
     entrada = open(nombreArchivo, "r", encoding="UTF-8" )
@@ -22,6 +23,7 @@ def listarEquiposOrdenados(nombreArchivo):
 
     return listaEquipos
 
+
 #2. Crea un diccionario con los equipos y sus puntos correspondientes
 def crearDiccionarioEquiposYPuntos(nombreArchivo):
     entrada = open(nombreArchivo, "r", encoding="UTF-8")
@@ -37,6 +39,7 @@ def crearDiccionarioEquiposYPuntos(nombreArchivo):
     entrada.close()
 
     return diccionarioEquiposPuntos
+
 
 #3. Hace una lista de los equipos que han perdido 3 partidos o menos
 def listarEquiposPartidosPerdidos(nombreArchivo):
@@ -80,6 +83,7 @@ def reportarErrorPuntos(nombreArchivo):
     entrada.close()
     return listaEquiposError
 
+
 #5. Encuentra el equipo con menor diferencia de goles
 def encontrarMenorDiferenciaGoles(nombreArchivo):
     entrada = open(nombreArchivo, "r", encoding="UTF-8")
@@ -115,7 +119,7 @@ def crearArchivoPuntos(nombreArchivo):
 
     diccionarioEquiposPuntos = {}
     listaPuntos = []
-    diccionarioUltimos = {}
+    listaEquiposUltimmos = []
 
     for linea in entrada:
         datos = linea.split("&")
@@ -123,10 +127,12 @@ def crearArchivoPuntos(nombreArchivo):
     for valor in diccionarioEquiposPuntos.values():
         listaPuntos.append(valor)
     listaPuntos.sort()
-    listaPuntosUltimos = listaPuntos[0:6]
+    listaPuntosUltimos = listaPuntos[0:5]
+
     for equipo, puntos in diccionarioEquiposPuntos.items():
         for puntosUltimos in listaPuntosUltimos:
-            if puntos == puntosUltimos:
+            if puntos == puntosUltimos and (equipo not in listaEquiposUltimmos):
+                listaEquiposUltimmos.append(equipo)
                 salida.write("%s&%d\n" % (equipo, puntos))
 
     entrada.close()
@@ -152,8 +158,6 @@ def graficarPuntos(nombreArchivo):
     plot.show()
 
 
-
-
 #Funcion principal
 def main():
     ordenados = listarEquiposOrdenados("LigaMX.txt")
@@ -169,14 +173,6 @@ def main():
 
     graficarPuntos("LigaMX.txt")
     crearArchivoPuntos("LigaMX.txt")
-
-
-
-
-
-
-
-
 
 
 
