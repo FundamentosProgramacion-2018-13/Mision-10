@@ -79,23 +79,30 @@ def reportarErrorPuntos(nombre):
     entrada.close()
     return listaEquiposError
 
+
+# Funcion que muestra al equipo con la menor diferencia de goles
 def mostrarDiferenciaGoles(nombre):
     entrada = open(nombre, "r")
     entrada.readline()                     # titulo
     entrada.readline()                     # titulo
 
-    listaEquipos = []
     listaGoles = []
 
     for linea in entrada:
         datos = linea.split("&")
+        listaGoles[datos[0]] = int(datos[7]) 
 
-
+     for valor in listaGoles.items():    
+         if diferencia > valor:     
+             diferencia = valor    
+    
+    for equipo, goles in listaGoles.items():
+        if diferencia == goles
+            resultado = equipo
+            
     entrada.close()
-    return listaEquipos
+    return resultado
 
-
-"def"
 
 # Funcion que muestra una grafica EQUIPOS vs. PUNTOS (solo la dibuja, NO regresa datos)
 def graficarPuntos(nombre):
@@ -124,12 +131,12 @@ def graficarPuntos(nombre):
 def main():
     ordenados = listarEquiposOrdenados("LigaMX.txt")
     print(ordenados)
-    errores = reportarErrorPuntos("LigaMX.txt")
-    print(errores)
-    perdedores = mostrarEquiposPerdedores("LigaMX.txt")
-    print(perdedores)
     puntaje = mostrarEquiposPuntos("LigaMX.txt")
     print(puntaje)
+    perdedores = mostrarEquiposPerdedores("LigaMX.txt")
+    print(perdedores)
+    errores = reportarErrorPuntos("LigaMX.txt")
+    print(errores)
     goles = mostrarDiferenciaGoles("LigaMX.txt")
     print(goles)
     graficar = graficarPuntos("LigaMX.txt")
