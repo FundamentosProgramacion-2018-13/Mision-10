@@ -157,22 +157,26 @@ def graficarPuntos(nombreArchivo):
     plot.plot(listaEquipos, listaPuntos)
     plot.show()
 
-
-#Funcion principal
+    
 def main():
+    print("1:")
     ordenados = listarEquiposOrdenados("LigaMX.txt")
     print (ordenados)
-    error = reportarErrorPuntos("LigaMX.txt")
-    print(error)
+    print("2:")
     diccionario = crearDiccionarioEquiposYPuntos("LigaMX.txt")
     print(diccionario)
+    print("3:")
     equipos3Perdidos = listarEquiposPartidosPerdidos("LigaMX.txt")
     print(equipos3Perdidos)
+    print("4:")
+    error = reportarErrorPuntos("LigaMX.txt")
+    print(error)
+    print("5:")
     equipoMenorDiferencia = encontrarMenorDiferenciaGoles("LigaMX.txt")
     print(equipoMenorDiferencia)
 
-    graficarPuntos("LigaMX.txt")
     crearArchivoPuntos("LigaMX.txt")
+    graficarPuntos("LigaMX.txt")
 
 
 
